@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/apollo',
-    '@nuxtjs/google-fonts'
+    '@pinia/nuxt'
   ],
   // @ts-ignore
   css: ["@/assets/main.css"],

@@ -13,5 +13,10 @@
     "@nuxtjs/tailwindcss": "^6.6.8",
     "@types/node": "^18",
     "nuxt": "^3.4.3"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.10",
+    "pinia": "^2.0.36",
+    "wavesurfer.js": "^6.6.3"
   }
 }
