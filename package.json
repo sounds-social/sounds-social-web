@@ -15,6 +15,7 @@
     "nuxt": "^3.4.3"
   },
   "dependencies": {
+    "@heroicons/vue": "^2.0.18",
     "@pinia/nuxt": "^0.4.10",
     "pinia": "^2.0.36",
     "wavesurfer.js": "^6.6.3"
