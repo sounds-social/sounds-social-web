@@ -1,41 +1,22 @@
-import { kebabCase } from 'lodash'
 import { defineStore } from 'pinia'
-
-const generateMockSound = (id: number) => ({
-  id, 
-  title: `Track Number ${id}`, 
-  uri: 'https://wavesurfer-js.org/example/media/demo.wav',
-  owner: { 
-    displayName: `Skrillex ${id}`, 
-    slug: kebabCase(`Skrillex ${id}`)
-  },
-})
 
 export const useSoundStore = defineStore('sound', {
   // a function that returns a fresh state
   state: () => ({
-    sounds: [
-      generateMockSound(1),
-      generateMockSound(2),
-      generateMockSound(3),
-      generateMockSound(4),
-      generateMockSound(5),
-      generateMockSound(6)
-    ],
+    sounds: [],
     wavesurferInstances: {},
     playingId: 0,
     rawIsPlaying: false
   }),
   getters: {
-    isPlaying: (state): boolean => {
+    isPlaying: (state): Function => {
       return (id: number): boolean => (state.playingId === id && state.rawIsPlaying === true)
     }
   },
   // optional actions
   actions: {
-    async loadSounds() {
-      // `this` is the store instance
-      this.sounds = []
+    async loadSounds(sounds: any) {
+      this.sounds = sounds
     },
     async play(id: number) {
       const wavesurfer = this.wavesurferInstances[id]
