@@ -1,5 +1,7 @@
 <template>
-  <Profile :user="data.currentUser" />
+  <div>
+    <Profile :user="data?.currentUser" />
+  </div>
 </template>
 <script lang="ts" setup>
 const query = gql`

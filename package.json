@@ -17,6 +17,7 @@
   "dependencies": {
     "@heroicons/vue": "^2.0.18",
     "@pinia/nuxt": "^0.4.10",
+    "lodash": "^4.17.21",
     "pinia": "^2.0.36",
     "wavesurfer.js": "^6.6.3"
   }

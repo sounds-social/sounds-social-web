@@ -1,10 +1,14 @@
+import { kebabCase } from 'lodash'
 import { defineStore } from 'pinia'
 
 const generateMockSound = (id: number) => ({
   id, 
   title: `Track Number ${id}`, 
   uri: 'https://wavesurfer-js.org/example/media/demo.wav',
-  owner: { displayName: `Skrillex ${id}` },
+  owner: { 
+    displayName: `Skrillex ${id}`, 
+    slug: kebabCase(`Skrillex ${id}`)
+  },
 })
 
 export const useSoundStore = defineStore('sound', {

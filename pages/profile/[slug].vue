@@ -1,5 +1,7 @@
 <template>
-  <Profile :user="data.user" />
+  <div>
+    <Profile :user="data?.user" />
+  </div>
 </template>
 <script lang="ts" setup>
 const query = gql`
@@ -12,11 +14,11 @@ query ProfileBySlug($slug: String!) {
 }
 `
 
+const route = useRoute()
+
 const variables = {
-  slug: 'user-one'
+  slug: route.params.slug
 }
 
 const { data, error } = await useAsyncQuery(query, variables)
-
-console.log(data)
 </script>
