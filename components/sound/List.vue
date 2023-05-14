@@ -21,6 +21,7 @@ const query = gql`
         id
         slug
         username
+        displayName
       }
     }
   }

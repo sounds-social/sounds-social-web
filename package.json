@@ -15,6 +15,7 @@
     "nuxt": "^3.4.3"
   },
   "dependencies": {
+    "@formkit/nuxt": "^0.17.0",
     "@heroicons/vue": "^2.0.18",
     "@pinia/nuxt": "^0.4.10",
     "lodash": "^4.17.21",
