@@ -27,6 +27,10 @@ onMounted(() => {
     store.play(props.id)
   })
 
+  wavesurfer.on('finish', () => {
+    store.playNext(props.id)
+  })
+
   wavesurfer.load(props.uri)
 
   store.addWavesurferInstance(props.id, wavesurfer)

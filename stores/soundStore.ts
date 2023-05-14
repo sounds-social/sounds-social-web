@@ -64,6 +64,14 @@ export const useSoundStore = defineStore('sound', {
         await this.play(id)
       }
     },
+    async playNext(id:number) {
+      const wavesurfer = this.wavesurferInstances[id + 1]
+      
+      if (wavesurfer) {
+        this.playingId = id + 1
+        await this.play(this.playingId)
+      }
+    },
     async addWavesurferInstance(id: number, instance: any) {
       this.wavesurferInstances[id] = instance
     }
