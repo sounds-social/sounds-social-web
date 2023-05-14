@@ -15,7 +15,7 @@
           </NuxtLink>
         </h2>
         <h3 class="text-lg text-stone-500">
-          <NuxtLink to="/">
+          <NuxtLink to="/profile/user-one">
             {{ sound.owner.displayName }}
           </NuxtLink>
         </h3>

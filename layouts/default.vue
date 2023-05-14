@@ -1,7 +1,9 @@
 <template>
   <div>
-    <AppHeader />
-    <slot />
-    <AppFooter />
+    <ClientOnly>
+      <AppHeader />
+      <slot />
+      <AppFooter />
+    </ClientOnly>
   </div>
 </template>
