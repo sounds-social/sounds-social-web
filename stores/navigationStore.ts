@@ -7,9 +7,5 @@ export const useNavigationStore = defineStore('navigation', {
   }),
   
   // optional actions
-  actions: {
-    async addWavesurferInstance(id: string) {
-      this.currentNavigationItem = id
-    }
-  },
+  actions: {},
 })
