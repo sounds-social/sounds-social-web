@@ -18,6 +18,7 @@
     "@formkit/nuxt": "^0.17.0",
     "@heroicons/vue": "^2.0.18",
     "@pinia/nuxt": "^0.4.10",
+    "axios": "^1.4.0",
     "lodash": "^4.17.21",
     "pinia": "^2.0.36",
     "wavesurfer.js": "^6.6.3"

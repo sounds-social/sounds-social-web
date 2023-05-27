@@ -4,6 +4,12 @@
   </div>
 </template>
 <script lang="ts" setup>
+import { useNavigationStore } from "~/stores/navigationStore"
+
+const navigationStore = useNavigationStore()
+
+navigationStore.currentNavigationItem = 'own-profile'
+
 const query = gql`
 query CurrentProfile {
   currentUser {

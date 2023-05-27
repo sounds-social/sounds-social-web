@@ -3,7 +3,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     '@nuxtjs/apollo',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    '@formkit/nuxt'
   ],
   // @ts-ignore
   css: ["@/assets/main.css"],
