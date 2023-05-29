@@ -76,12 +76,19 @@ const onSubmit = async (event: any) => {
       formEl.querySelector('input[name="slug"]')?.value
     )
 
-    const data = await axios.post(
+    const bearerToken = window.localStorage.getItem('auth-token')
+
+    const response = await axios.post(
       'http://localhost:3000/upload/sound', 
-      formData
+      formData,
+      { headers: { Authorization: bearerToken } }
     )
 
-    console.log(data)
+    if (response.status === 201) {
+      const router = useRouter()
+
+      router.push({ path: '/' })
+    }
   }
 }
 </script>
