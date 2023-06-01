@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="my-7 mx-3" v-if="user">
+    <div v-if="user">
       <h1 class="text-5xl font-bold">{{ user.username }}</h1>
       <h2>User id: {{ user.id }}</h2>
     </div>
