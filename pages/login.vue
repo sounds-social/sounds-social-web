@@ -22,8 +22,12 @@
         hover:bg-sky-500 hover:text-white" 
       @click="login">Login</button>
 
-    <div v-if="hasError" class="text-red-600 py-3">
-      Could not login
+    <button class="mt-4 ml-4 py-1 px-2 border border-solid 
+      hover:bg-sky-500 hover:text-white" 
+    @click="signUp">Sign up</button>
+
+    <div v-if="errorType" class="text-red-600 py-3">
+      Could not {{errorType}}.
     </div>
   </div>
 </template>
@@ -36,7 +40,7 @@ navigationStore.currentNavigationItem = 'login'
 
 const username = ref('')
 const password = ref('')
-const hasError = ref(false)
+const errorType = ref('')
 
 const login = async () => {
   const mutation = gql`
@@ -58,7 +62,7 @@ const login = async () => {
   const { data, error } = await useAsyncQuery(mutation, variables)
 
   if (error.value?.message) {
-    hasError.value = true
+    errorType.value = 'login'
   } else {
     window.localStorage.setItem(
       'auth-token', 
@@ -67,6 +71,30 @@ const login = async () => {
 
     const router = useRouter()
     router.push({ path: '/you/profile' })
+  }
+}
+
+const signUp = async () => {
+  const mutation = gql`
+  mutation SignUp($username: String!, $password: String!) {
+    signup(loginUserInput: { username: $username, password: $password }) {
+      id
+      displayName
+      username
+    }
+  }`
+
+  const variables = { 
+    username: username.value,
+    password: password.value 
+  }
+
+  const { data, error } = await useAsyncQuery(mutation, variables)
+
+  if (error.value?.message) {
+    errorType.value = 'sign up'
+  } else {
+    await login()
   }
 }
 </script>

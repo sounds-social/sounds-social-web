@@ -1,9 +1,5 @@
 <template>
-  <div class="my-5 p-3 rounded-xl border-4" 
-    :key="sound.id" 
-    v-for="sound in store.sounds">
-      <SoundElement :sound="sound" />
-  </div>
+  <SoundListPure :sounds="sounds" />
 </template>
 <script lang="ts" setup>
 import { useSoundStore } from '~/stores/soundStore';
@@ -30,4 +26,6 @@ const query = gql`
 const { data, error } = await useAsyncQuery(query)
 
 await store.loadSounds(data.value.sounds)
+
+const sounds = data.value.sounds
 </script>

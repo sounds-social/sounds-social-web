@@ -9,11 +9,9 @@
   </ClientOnly> 
 </template>
 <script lang="ts" setup>
-import { useSoundStore } from "~/stores/soundStore"
+const route = useRoute();
 
-const route = useRoute()
-
-const slug = route.params.slug
+const slug = route.params.slug;
 
 const query = gql`
   query SoundBySlug($slug: String!) {
@@ -26,14 +24,15 @@ const query = gql`
         id
         slug
         username
+        displayName
       }
     }
   }
-`
+`;
 
-const variables = { slug }
+const variables = { slug };
 
-const { data, error } = await useAsyncQuery(query, variables)
+const { data, error } = await useAsyncQuery(query, variables);
 
-const sound = data?.value?.sound
+const sound = data?.value?.sound;
 </script>
