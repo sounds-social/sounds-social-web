@@ -20,8 +20,10 @@ const store = useSoundStore()
 
 const slug = props.slug;
 
+let wavesurfer: any
+
 onMounted(() => {
-  const wavesurfer = WaveSurfer.create({
+  wavesurfer = WaveSurfer.create({
     container: `#${randomId}`,
     responsive: true
   })
@@ -53,5 +55,11 @@ onMounted(() => {
   wavesurfer.load(props.uri)
 
   store.addWavesurferInstance(props.id, wavesurfer)
+})
+
+onBeforeUnmount(() => {
+  if (wavesurfer && wavesurfer.isPlaying()) {
+    store.playOrPause(props.id)
+  }
 })
 </script>
