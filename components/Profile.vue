@@ -56,7 +56,7 @@ const user = props.user;
 const store = useSoundStore();
 
 const query = gql`
-  query SoundsForUser($slug: String!) {
+  query ProfileForUser($slug: String!) {
     user(slug: $slug) {
       likes {
         sound {
