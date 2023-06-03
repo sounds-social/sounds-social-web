@@ -6,6 +6,8 @@
     <div class="text-neutral-400 italic text-2xl m-3" v-else>
       Sound not found.
     </div>
+
+    <SoundLikeButton :slug="sound.slug" />
   </ClientOnly> 
 </template>
 <script lang="ts" setup>
