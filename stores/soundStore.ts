@@ -50,10 +50,10 @@ export const useSoundStore = defineStore('sound', {
       }
     },
     async playNext(id:number) {
-      const wavesurfer = this.wavesurferInstances[id + 1]
-      
+      const wavesurfer = this.wavesurferInstances[id - 1]
+
       if (wavesurfer) {
-        this.playingId = id + 1
+        this.playingId = id - 1
         await this.play(this.playingId)
       }
     },

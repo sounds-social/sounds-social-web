@@ -1,6 +1,9 @@
 <template>
-  <div class="my-5 p-3 mx-3  cursor-pointer" 
-      :class="[hasLiked ? 'font-bold text-red-500' : 'text-neutral-400']"
+  <div class="
+        m-2 p-2 cursor-pointer inline-block align-middle border border-solid
+        rounded
+      " 
+      :class="[hasLiked ? 'font-bold text-red-500 border-red-600' : 'text-neutral-400']"
       @click="likeOrRemoveLike()">
   
       <div class="inline-block align-middle">

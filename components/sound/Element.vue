@@ -20,7 +20,10 @@
       </div> 
     </div>
 
-    <SoundWavesurfer :id="sound.id" :uri="sound.uri"></SoundWavesurfer>
+    <SoundWavesurfer 
+      :id="sound.id" 
+      :uri="sound.uri" 
+      :slug="sound.slug"></SoundWavesurfer>
   </div>
 </template>
 <script lang="ts" setup>

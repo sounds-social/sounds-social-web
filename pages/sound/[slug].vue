@@ -8,6 +8,7 @@
     </div>
 
     <SoundLikeButton :slug="sound.slug" />
+    <SoundPlaysDisplay :slug="sound.slug" />
   </ClientOnly> 
 </template>
 <script lang="ts" setup>
