@@ -1,6 +1,15 @@
 <template>
-  <div>
-    <div class="inline-block align-top">
+  <div class="flex">
+    <div class="flex-none rounded mr-4"
+        :class="[
+          sound.coverUri ? 'bg-contain' : 'bg-gradient-to-r from-cyan-500 to-blue-500',
+        ]" 
+        :style="`${
+          sound.coverUri ? `background-image: url(${sound.coverUri})` : ''}`"
+      style="width: 200px; height: 200px">
+    </div>
+
+    <div class="flex-1 inline-block align-top">
       <div class="mr-1 inline-block align-top cursor-pointer" @click="store.playOrPause(sound.id)">
         <PlayCircleIcon v-if="!store.isPlaying(sound.id)" class="h-8 w-8 text-blue-500" />
         <PauseCircleIcon v-if="store.isPlaying(sound.id)" class="h-8 w-8 text-blue-500" />
@@ -18,12 +27,12 @@
           </NuxtLink>
         </h3>
       </div> 
-    </div>
 
-    <SoundWavesurfer 
-      :id="sound.id" 
-      :uri="sound.uri" 
-      :slug="sound.slug"></SoundWavesurfer>
+      <SoundWavesurfer 
+        :id="sound.id" 
+        :uri="sound.uri" 
+        :slug="sound.slug"></SoundWavesurfer>
+    </div>
   </div>
 </template>
 <script lang="ts" setup>

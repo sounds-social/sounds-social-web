@@ -13,6 +13,7 @@ const query = gql`
       title
       slug
       uri
+      coverUri
       owner {
         id
         slug
