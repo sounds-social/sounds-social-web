@@ -11,6 +11,13 @@
   </ClientOnly> 
 </template>
 <script lang="ts" setup>
+
+definePageMeta({
+  middleware: [
+    'auth'
+  ],
+});
+
 const route = useRoute();
 
 const slug = route.params.slug;
