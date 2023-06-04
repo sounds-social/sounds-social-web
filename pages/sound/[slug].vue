@@ -18,26 +18,46 @@
             >
           Upload cover image
         </button>
+
+        <button class="ml-3 border border-solid p-2 
+                      rounded font-bold text-gray-600 cursor-pointer"
+                @click="showRemoveSoundModal($event)"
+            >
+          Remove Sound
+        </button>
       </div>
     </div>
 
     <dialog id="coverImageForm">
       <form action="http://localhost:3000/upload/sound" 
       method="post"
-      @submit="onSubmit($event)">
-      
-      <h3 class="font-bold text-2xl mb-4">Edit cover image</h3>
+      @submit="onSubmit($event)">  
+        <h3 class="font-bold text-2xl mb-4">Edit cover image</h3>
 
-      <input type="file" accept="image/*" @change="onFileUpload($event)" />
+        <input type="file" accept="image/*" @change="onFileUpload($event)" />
 
-      <div class="block">
-        <button class="inline-block mt-4 p-2 bg-green-400 rounded mr-3">Submit</button>
+        <div class="block">
+          <button class="inline-block mt-4 p-2 bg-green-400 rounded mr-3">Submit</button>
 
-        <button class="inline-block mt-4 p-2 bg-gray-300 rounded" 
-          @click="closeModal($event)">Close</button>
-      </div>
-    </form>
+          <button class="inline-block mt-4 p-2 bg-gray-300 rounded" 
+            @click="closeModal($event)">Close</button>
+        </div>
+      </form>
 
+    </dialog>
+
+
+    <dialog id="removeSoundModal">
+      <h3 class="font-bold text-2xl mb-4">Remove sound</h3>
+
+        <div class="block">
+          <div class="cursor-pointer inline-block mt-4 p-2 bg-green-400 rounded mr-3"
+            @click="removeSound($event)"
+          >Remove</div>
+
+          <button class="inline-block mt-4 p-2 bg-gray-300 rounded" 
+            @click="closeRemoveModal($event)">Close</button>
+        </div>
     </dialog>
   </ClientOnly> 
 </template>
@@ -98,9 +118,39 @@ const showModal = (event: Event) => {
   window.document.querySelector('#coverImageForm')?.showModal()
 }
 
+const showRemoveSoundModal = (event: Event) => {
+  event.preventDefault()
+  window.document.querySelector('#removeSoundModal')?.showModal()
+}
+
 const closeModal = (event: Event) => {
   event.preventDefault()
   window.document.querySelector('#coverImageForm')?.close()
+}
+
+const closeRemoveModal = (event: Event) => {
+  event.preventDefault()
+  window.document.querySelector('#removeSoundModal')?.close()
+}
+
+const removeSound = async (event: Event) => {
+  event.preventDefault()
+
+  const query = gql`
+    mutation RemoveSound($soundId: Int!) {
+      removeSound(id: $soundId) {
+        id
+      }
+    }
+  `
+
+  const { data, error } = await useAsyncQuery(query , {
+    soundId: sound.id
+  });
+
+  const router = useRouter()
+
+  router.push({ path: '/you/profile' })
 }
 
 let file: any = null
@@ -115,8 +165,6 @@ const onSubmit = async (event: any) => {
   event.preventDefault()
   const formEl = document.querySelector('#coverImageForm > form')
 
-
-  console.log(formEl)
   if (formEl) {
     const formData = new FormData()
     formData.append('file', file, file.name)
